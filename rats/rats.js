@@ -20,33 +20,56 @@
 //https://data.cityofnewyork.us/resource/xx67-kt59.json?$limit=1000
 
 
-function preload(){
-	getRats();
-}
+//program looks at temp in NYC and recommends clothing options based on temp range
+//I decided to use this instead of the rats api because I think that this is a better idea for data visualization
 
 function setup(){
-	var ratsUrl = 'https://data.cityofnewyork.us/resource/xx67-kt59.json?$limit=1000'; 
-	loadJSON(ratsurl, getRats);
+	createCanvas(500,500);
+	var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?q=NewYork&APPID=f126c7ca5adc148cc58a0f0313448351&units=metric'; 
+	
+
+	loadJSON(weatherUrl, getWeather);
 
 }
-
-function draw(){
-	background(200);
-
-}
-
 
 // this is gonna grab the NYC open data stuff
-function getRats(){
-
-	// get the zipcode value out of the loaded JSON
-  	var zipcode = rats.main.humidity;
- 	fill(0, humidity); // use the humidity value to set the alpha
- 	ellipse(width/2, height/2, 50, 50);
+function getWeather(){
+	weather = data;
 
 }
 
-function ratsDownloaded(){
-	// this will run once the city open data is grabbed
-	console.log(rats.length); // how many records?
+function draw(data){
+	//background(255);
+
+	//IF STATEMENT FOR CLOTHING
+	if(weather.main.temp > -9 && weather.main.temp < 0){  //jan/feb
+		background(); //color
+		//add outfit for weather
+	}else if(weather.main.temp > 1 && weather.main.temp < 10){  //march/nov/dec
+		background(); //color
+		//add outfit for weather
+	}else if(weather.main.temp > 11 && weather.main.temp < 20){  //april/may/sept/oct
+		background(); //color
+		//add outfit for weather
+	}else if(weather.main.temp > 21 && weather.main.temp < 30){  //may/june/july
+		background(); //color
+		//add outfit for weather
+	}else if(weather.main.temp > 31 && weather.main.temp < 40){  //july
+		background(); //color
+		//add outfit for weather
+	}
+
+	//IF STATEMENT FOR CLOUDS IN BACKGROUND
+	if(weather.clouds.all > 50){
+		//clouds moving across screen
+	}
+
+	//IF STATEMENT FOR WIND
+	if(weather.wind.speed > 6){
+		//wind noise
+	}
 }
+
+
+
+
