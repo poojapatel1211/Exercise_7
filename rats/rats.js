@@ -19,26 +19,30 @@
 
 //https://data.cityofnewyork.us/resource/xx67-kt59.json?$limit=1000
 
-var ratsUrl = 'https://data.cityofnewyork.us/resource/xx67-kt59.json?$limit=1000'; 
 
 function preload(){
 	getRats();
 }
 
 function setup(){
-	
+	var ratsUrl = 'https://data.cityofnewyork.us/resource/xx67-kt59.json?$limit=1000'; 
+	loadJSON(ratsurl, getRats);
+
 }
 
 function draw(){
-	
+	background(200);
+
 }
 
 
 // this is gonna grab the NYC open data stuff
 function getRats(){
 
-	 // this will download the city open data on the health violations:
-  rats = loadJSON(ratsUrl, ratsDownloaded); // asynchronous API call
+	// get the zipcode value out of the loaded JSON
+  	var zipcode = rats.main.humidity;
+ 	fill(0, humidity); // use the humidity value to set the alpha
+ 	ellipse(width/2, height/2, 50, 50);
 
 }
 
